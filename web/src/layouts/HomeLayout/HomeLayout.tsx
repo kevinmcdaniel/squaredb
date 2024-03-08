@@ -5,7 +5,7 @@ type HomeLayoutProps = {
 }
 
 const HomeLayout = ({ children }: HomeLayoutProps) => {
-  return 
+  return (
     <>
       <header>
         <h1>
@@ -26,6 +26,7 @@ const HomeLayout = ({ children }: HomeLayoutProps) => {
         {children}
       </main>
     </>
+  )
 }
 
 export default HomeLayout
