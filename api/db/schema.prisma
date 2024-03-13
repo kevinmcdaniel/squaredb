@@ -22,3 +22,31 @@ model UserExample {
   email String  @unique
   name  String?
 }
+
+model Person {
+  id         Int      @id @default(autoincrement())
+  fullName   String
+  firstName  String
+  preferredName String
+  lastName   String
+  email      String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime
+}
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  title     String
+  body      String
+  createdAt DateTime @default(now())
+}
+
+//                club
+//                /
+//         Dancer
+//               \ 
+//              level
+//   call       /    \
+//      \      /      side
+//    formation  
+//                
