@@ -1,23 +1,22 @@
-version: '0.1.2'
+version: '0.1.6'
 
 services:
   nodejs:
-    image: nodejs
     build:
       context: .
-      dockerfile: Dockerfile.express
+      dockerfile: Dockerfile.api
     environment:
       NODE_ENV: development
     env_file: 
       - .env
     volumes:
-      - express/src:/app/src
+      - ./api/src:/app/src
       - .env:/app/.env
-    container_name: express
+    container_name: sdb_api
     #command: npm run localdev
     command: npm run dev
     ports:
-      - ${EXPRESS_PORT}:${EXPRESS_PORT}
+      - ${API_PORT}:${API_PORT}
     
     # depends_on:
     #   - flagd
