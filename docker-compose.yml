@@ -1,0 +1,58 @@
+version: '0.1.2'
+
+services:
+  nodejs:
+    image: nodejs
+    build:
+      context: .
+      dockerfile: Dockerfile.express
+    environment:
+      NODE_ENV: development
+    env_file: 
+      - .env
+    volumes:
+      - express/src:/app/src
+      - .env:/app/.env
+    container_name: express
+    #command: npm run localdev
+    command: npm run dev
+    ports:
+      - ${EXPRESS_PORT}:${EXPRESS_PORT}
+    
+    # depends_on:
+    #   - flagd
+    #   - db
+
+  # flagd:
+  #   image: flagd
+  #   build:
+  #     context: .
+  #     dockerfile: ./Dockerfile.flagd
+  #   container_name: 'flagd'
+  #   volumes:
+  #     - ./flags.flagd.json:/etc/flagd/flags.flagd.json
+
+  #   tty: true
+  #   stdin_open: true
+  #   ports:
+  #     - 8013:8013
+  #   command: start --uri file:/etc/flagd/flags.flagd.json
+    
+  # db:
+  #   image: postgres.db
+  #   build:
+  #     context: .
+  #     dockerfile: ./Dockerfile.postgres
+  #   env_file: 
+  #     - .env
+  #   environment:
+  #     POSTGRES_DB: ${DATABASENAME}
+  #     POSTGRES_USER: ${USERNAME}
+  #     POSTGRES_PASSWORD: ${PASSWORD}
+  #   ports:
+  #     - 5432:5432
+  #   container_name: postgres.db
+  #   command: postgres
+  #   depends_on:
+  #     - flagd
+    
