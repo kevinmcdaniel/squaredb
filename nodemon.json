@@ -1,0 +1,30 @@
+{
+    "restartable": "rs",
+    "ignore": [
+        ".git",
+        "node_modules/**/node_modules",
+        "dist/**/*",
+        "coverage/**/*",
+        "test/**/*",
+        "ci/**/*",
+        "commerce/**/*",
+        "contentstack/**/*"
+    ],
+    "verbose": true,
+    "execMap": {
+        "ts": "ts-node --require dotenv/config --project tsconfig.json --files --transpile-only"
+    },
+    "events": {
+        "restart": "osascript -e 'display notification \"App restarted due to:\n'$FILENAME'\" with title \"nodemon\"'"
+    },
+    "watch": [
+        "src"
+    ],
+    "env": {
+        "NODE_ENV": "development"
+    },
+    "script": "src/server.ts",
+    "ext": "ts,json,prisma",
+    "delay": "1000",
+    "legacyWatch": true
+}

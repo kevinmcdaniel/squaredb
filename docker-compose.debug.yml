@@ -1,43 +1,14 @@
-version: '3.8'
+version: '3.4'
 
 services:
-  express:
+  enabledb:
+    image: enabledb
     build:
       context: .
-      dockerfile: Dockerfile.expressjs
-    ports:
-      - "${PORT}:${PORT}"
+      dockerfile: ./Dockerfile
     environment:
-      NODE_ENV: ${CONTENTSTACK_ENVIROMENT}
-      FLAGD_URL: http://${FLAGD_HOST}:${FLAGD_PORT}
-      DATABASE_URL: ${DATABASE_URL}
-    env_file:
-      - .env
-    depends_on:
-      - postgres
-      - flagd
-    command: >
-      sh -c "npx prisma generate --schema=./src/model/schema.prisma && npm run localdev"
-
-  postgres:
-    build:
-      context: .
-      dockerfile: Dockerfile.postgres
+      NODE_ENV: development
     ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_USER: ${USERNAME}
-      POSTGRES_PASSWORD: ${PASSWORD}
-      POSTGRES_DB: ${DATABASENAME}
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-
-  flagd:
-    build:
-      context: .
-      dockerfile: Dockerfile.flagd
-    ports:
-      - "${FLAGD_PORT}:${FLAGD_PORT}"
-
-volumes:
-  pgdata:
+      - 3000:3000
+      - 9229:9229
+    command: ["node", "--inspect=0.0.0.0:9229", "src/server.ts"]

@@ -1,39 +1,62 @@
-version: '3.8'
-
+version: '3.11'
 services:
-  express:
+  nodejs:
+    image: enableexpressjs
     build:
       context: .
-      dockerfile: Dockerfile.expressjs
-    ports:
-      - "3000:3000"
+      dockerfile: ./Dockerfile.expressjs
     environment:
-      - NODE_ENV=development
-      - FLAGD_URL=http://flagd:8013
-      - DATABASE_URL=postgresql://postgres:password@postgres:5432/mydatabase
-    depends_on:
-      - postgres
-      - flagd
-
-  postgres:
-    build:
-      context: .
-      dockerfile: Dockerfile.postgres
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: mydatabase
+      NODE_ENV: production
+      DATABASE_URL: ${DATABASE_URL}
+    env_file: 
+      - .env
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - ./src:/app/src
+      - ./.env:/app/.env
+      - ./package.json:/app/package.json
+      - ./package-lock.json:/app/package-lock.json
+      - ./tsconfig.json:/app/tsconfig.json
+      # - ${MTX_CSV_PATH}:/app/data/Employee_Matrix_Download.csv
+    ports:
+      - ${PORT}:${PORT}
+    container_name: expressjs
+    command: npm run dev
+    depends_on:
+      - flagd
+      - db
 
   flagd:
+    image: flagd
     build:
       context: .
-      dockerfile: Dockerfile.flagd
+      dockerfile: ./Dockerfile.flagd
+    container_name: 'flagd'
+    env_file: 
+      - .env
+    volumes:
+      - ./flags.flagd.json:/etc/flagd/flags.flagd.json
+    tty: true
+    stdin_open: true
     ports:
-      - "8013:8013"
+      - ${FLAGD_PORT}:${FLAGD_PORT}
+    command: start --uri file:/etc/flagd/flags.flagd.json
+    
+  db:
+    image: postgres
+    restart: always
+    env_file: 
+      - .env
+    environment:
+      POSTGRES_DB: ${DATABASENAME}
+      POSTGRES_USER: ${USERNAME}
+      POSTGRES_PASSWORD: ${PASSWORD}
+    ports:
+      - "5432:5432"
+    container_name: postgres.db
+    depends_on:
+      - flagd
+    volumes: 
+      - postgres_db:/var/lib/postgresql/data
 
 volumes:
-  pgdata:
+  postgres_db:
