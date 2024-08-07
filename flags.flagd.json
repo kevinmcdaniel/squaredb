@@ -1,0 +1,206 @@
+{
+    "flags": {
+        "welcome": {
+            "variants": {
+                "on": true,
+                "off": false
+            },
+            "state": "ENABLED",
+            "defaultVariant": "on"
+        },
+        "himom": {
+            "variants": {
+                "on": true,
+                "off": false
+            },
+            "state": "ENABLED",
+            "defaultVariant": "on"
+        },
+        "v1-company-create": {
+            "variants": {
+                "on": true,
+                "off": false
+            },
+            "state": "ENABLED",
+            "defaultVariant": "on"
+        },
+        "v1-company-update": {
+            "variants": {
+                "on": true,
+                "off": false
+            },
+            "state": "ENABLED",
+            "defaultVariant": "on"
+        },
+        "v1-company-delete": {
+            "variants": {
+                "on": true,
+                "off": false
+            },
+            "state": "ENABLED",
+            "defaultVariant": "on"
+        },
+        "v1-company-get": {
+            "variants": {
+                "on": true,
+                "off": false
+            },
+            "state": "ENABLED",
+            "defaultVariant": "on"
+        },
+        "v1-customer-update-password": {
+            "variants": {
+                "on": true,
+                "off": false
+            },
+            "state": "ENABLED",
+            "defaultVariant": "on"
+        },
+        "v1-customer-validate-email": {
+            "variants": {
+                "on": true,
+                "off": false
+            },
+            "state": "ENABLED",
+            "defaultVariant": "on"
+        },
+        "v1-companyuser-create": {
+            "variants": {
+                "on": true,
+                "off": false
+            },
+            "state": "ENABLED",
+            "defaultVariant": "on"
+        },
+        "v1-companyuser-update": {
+            "variants": {
+                "on": true,
+                "off": false
+            },
+            "state": "ENABLED",
+            "defaultVariant": "on"
+        },
+        "v1-companyuser-delete": {
+            "variants": {
+                "on": true,
+                "off": false
+            },
+            "state": "ENABLED",
+            "defaultVariant": "on"
+        },
+        "v1-customer-permission-create": {
+            "variants": {
+                "on": true,
+                "off": false
+            },
+            "state": "ENABLED",
+            "defaultVariant": "on"
+        },
+        "v1-customer-permission-update": {
+            "variants": {
+                "on": true,
+                "off": false
+            },
+            "state": "ENABLED",
+            "defaultVariant": "on"
+        },
+        "v1-customer-permission-delete": {
+            "variants": {
+                "on": true,
+                "off": false
+            },
+            "state": "ENABLED",
+            "defaultVariant": "on"
+        },
+        "v1-customer-permission-getAll": {
+            "variants": {
+                "on": true,
+                "off": false
+            },
+            "state": "ENABLED",
+            "defaultVariant": "on"
+        },
+        "v1-customer-role-getAll": {
+            "variants": {
+                "on": true,
+                "off": false
+            },
+            "state": "ENABLED",
+            "defaultVariant": "on"
+        },
+        "v1-customer-role-create": {
+            "variants": {
+                "on": true,
+                "off": false
+            },
+            "state": "ENABLED",
+            "defaultVariant": "on"
+        },
+        "v1-customer-role-update": {
+            "variants": {
+                "on": true,
+                "off": false
+            },
+            "state": "ENABLED",
+            "defaultVariant": "on"
+        },
+        "v1-customer-role-delete": {
+            "variants": {
+                "on": true,
+                "off": false
+            },
+            "state": "ENABLED",
+            "defaultVariant": "on"
+        },
+        "v1-emailDomain-create": {
+            "variants": {
+                "on": true,
+                "off": false
+            },
+            "state": "ENABLED",
+            "defaultVariant": "on"
+        },
+        "v1-emailDomain-update": {
+            "variants": {
+                "on": true,
+                "off": false
+            },
+            "state": "ENABLED",
+            "defaultVariant": "on"
+        },
+        "v1-emailDomain-delete": {
+            "variants": {
+                "on": true,
+                "off": false
+            },
+            "state": "ENABLED",
+            "defaultVariant": "on"
+        },
+        "v1-forgot-email": {
+            "variants": {
+                "on": true,
+                "off": false
+            },
+            "state": "ENABLED",
+            "defaultVariant": "on"
+        },
+        "v1-customer-login": {
+            "variants": {
+                "on": true,
+                "off": false
+            },
+            "state": "ENABLED",
+            "defaultVariant": "on"
+        },
+        "v1-lead-register": {
+            "variants": {
+                "on": true,
+                "off": false
+            },
+            "state": "ENABLED",
+            "defaultVariant": "on"
+        }
+
+        
+    }
+}

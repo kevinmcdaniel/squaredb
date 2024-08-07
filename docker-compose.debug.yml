@@ -6,14 +6,18 @@ services:
       context: .
       dockerfile: Dockerfile.expressjs
     ports:
-      - "3000:3000"
+      - "${PORT}:${PORT}"
     environment:
-      - NODE_ENV=development
-      - FLAGD_URL=http://flagd:8013
-      - DATABASE_URL=postgresql://postgres:password@postgres:5432/mydatabase
+      NODE_ENV: ${CONTENTSTACK_ENVIROMENT}
+      FLAGD_URL: http://${FLAGD_HOST}:${FLAGD_PORT}
+      DATABASE_URL: ${DATABASE_URL}
+    env_file:
+      - .env
     depends_on:
       - postgres
       - flagd
+    command: >
+      sh -c "npx prisma generate --schema=./src/model/schema.prisma && npm run localdev"
 
   postgres:
     build:
@@ -22,9 +26,9 @@ services:
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: mydatabase
+      POSTGRES_USER: ${USERNAME}
+      POSTGRES_PASSWORD: ${PASSWORD}
+      POSTGRES_DB: ${DATABASENAME}
     volumes:
       - pgdata:/var/lib/postgresql/data
 
@@ -33,7 +37,7 @@ services:
       context: .
       dockerfile: Dockerfile.flagd
     ports:
-      - "8013:8013"
+      - "${FLAGD_PORT}:${FLAGD_PORT}"
 
 volumes:
   pgdata:
